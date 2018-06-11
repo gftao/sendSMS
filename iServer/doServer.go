@@ -33,7 +33,7 @@ func IDoFunct(w http.ResponseWriter, r *http.Request, getTransFunc GetDoTransFun
 	gerr = trans.VerifyTransMessage(tr)
 	if gerr != nil {
 		myLogger.Errorf("报文验证失败:[%s]", gerr)
-		RejectMsg(w, tr, defs.TRN_FORMAT_ERR, err.Error())
+		RejectMsg(w, tr, defs.TRN_FORMAT_ERR, gerr.Error())
 		return
 	}
 
@@ -44,7 +44,7 @@ func IDoFunct(w http.ResponseWriter, r *http.Request, getTransFunc GetDoTransFun
 	}
 	gerr = TransFunc.Init()
 	if gerr != nil {
-		RejectMsg(w, tr, defs.TRN_FORMAT_ERR, err.Error())
+		RejectMsg(w, tr, defs.TRN_FORMAT_ERR, gerr.Error())
 		return
 	}
 	gerr = TransFunc.DoTrans(tr)
