@@ -41,7 +41,7 @@ func SignTransMessage(t *TransMessage) gerror.IError {
 
 	} else if t.Sign_method == "03" {
 		myLogger.Debug("开始HmacMD5签名")
-		h := security.HmacMd5(t.Msg_body, GlobA.HmacKey)
+		h := security.HmacMd5(t.Msg_body, GlobA.HmacKeyS)
 		t.Signature = h
 	}
 	myLogger.Debug("报文签名成功")
@@ -58,7 +58,7 @@ func VerifyTransMessage(t *TransMessage) gerror.IError {
 		ok = security.VerifyMd5([]byte(t.Msg_body), t.Signature)
 	} else if t.Sign_method == "03" {
 		myLogger.Debug("开始HmacMD5验证")
-		ok = security.VerifyHmacMd5([]byte(t.Msg_body), []byte(t.Signature), []byte(GlobA.HmacKey))
+		ok = security.VerifyHmacMd5([]byte(t.Msg_body), []byte(t.Signature), []byte(GlobA.HmacKeyS))
 	} else if t.Sign_method == "AA" {
 		myLogger.Debug("测试不验证签名")
 		ok = true

@@ -120,7 +120,7 @@ func (t *T10004003) AnalyRsp() gerror.IError {
 }
 
 func (t *T10004003) SignReq() gerror.IError {
-	h := security.HmacMd5(t.rootReq.EnvelopeXML, trans.GlobA.HmacKey)
+	h := security.HmacMd5(t.rootReq.EnvelopeXML, trans.GlobA.HmacKeyB)
 	t.rootReq.Signature = h
 	t.Info("签名成功：", t.rootReq.Signature)
 	return nil

@@ -10,7 +10,8 @@ import (
 const TermKeyOutTime = 100
 
 type globArgv struct {
-	HmacKey  string
+	HmacKeyS string
+	HmacKeyB string
 	BackHost string
 	Invoker  string
 	PubKey   *rsa.PublicKey
@@ -27,7 +28,8 @@ func InitArgv() error {
 	GlobA = new(globArgv)
 	config.SetSection("glob")
 
-	GlobA.HmacKey = config.StringDefault("HmacKey", "")
+	GlobA.HmacKeyS = config.StringDefault("HmacKeyS", "")
+	GlobA.HmacKeyB = config.StringDefault("HmacKeyB", "")
 	ip := config.StringDefault("RemoteIP", "")
 	port := config.StringDefault("RemptePort", "")
 	GlobA.BackHost = ip + ":" + port
