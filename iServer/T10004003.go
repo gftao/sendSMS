@@ -135,7 +135,7 @@ func (t *T10004003) toBack() gerror.IError {
 		return gerror.NewR(30041, err, "DialTCP 失败:[%s]", peerAddr)
 	}
 	defer tcpConn.Close()
-	tcpConn.SetDeadline(time.Now().Add(time.Second * time.Duration(30)))
+	tcpConn.SetDeadline(time.Now().Add(time.Second * time.Duration(10)))
 
 	sndNum, err := tcpConn.Write([]byte(fmt.Sprintf("%04d", len(t.toRoot))))
 	t.Info("tcpConn Write len: ", sndNum)
