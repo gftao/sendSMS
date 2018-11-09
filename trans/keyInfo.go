@@ -2,14 +2,6 @@ package trans
 
 import (
 	"crypto/rsa"
-	"mygolib/security"
-	"mygolib/gerror"
-	"mygolib/defs"
-	"mygolib/modules/cache"
-	"mygolib/modules/gormdb"
-	"time"
-	"upEletrcSign/dbModels"
-	"mygolib/modules/myLogger"
 )
 
 type KeyInfo struct {
@@ -34,7 +26,7 @@ type KeyHandleInfo struct {
 	ServerPubKey *rsa.PublicKey
 	ServerPriKey *rsa.PrivateKey
 }
-
+/*
 func InitKeyHandle(k *KeyHandleInfo, prefix, mcht_cd, term_id string) gerror.IError {
 	//从cache中查找句柄
 	term_key := prefix + mcht_cd + term_id
@@ -71,3 +63,4 @@ func InitKeyHandle(k *KeyHandleInfo, prefix, mcht_cd, term_id string) gerror.IEr
 	myLogger.Info("从缓存加载key成功:" + term_key)
 	return nil
 }
+*/
