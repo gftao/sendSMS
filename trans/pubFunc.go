@@ -52,7 +52,6 @@ func VerifyTransMessage(t *TransMessage) gerror.IError {
 	var ok bool = false
 	if t.Sign_method == "01" {
 		myLogger.Debug("开始RSA验证")
-
 	} else if t.Sign_method == "02" {
 		myLogger.Debug("开始MD5验证")
 		ok = security.VerifyMd5([]byte(t.Msg_body), t.Signature)

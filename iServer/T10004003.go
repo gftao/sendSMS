@@ -102,6 +102,7 @@ func (t *T10004003) BuildReq() gerror.IError {
 	t.Infof("请求串GBK编码:%s", cs)
 	return nil
 }
+
 func (t *T10004003) AnalyRsp() gerror.IError {
 
 	cs := t.dec.ConvertString(string(t.outRoot))
@@ -125,6 +126,7 @@ func (t *T10004003) SignReq() gerror.IError {
 	t.Info("签名成功：", t.rootReq.Signature)
 	return nil
 }
+
 func (t *T10004003) toBack() gerror.IError {
 	peerAddr, err := net.ResolveTCPAddr("tcp4", trans.GlobA.BackHost)
 	if err != nil {
