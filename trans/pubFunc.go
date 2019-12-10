@@ -35,7 +35,6 @@ func Md5Base64(origData []byte) string {
 	return security.GenMd5(origData)
 }
 func SignTransMessage(t *TransMessage) gerror.IError {
-
 	if t.Sign_method == "01" {
 		myLogger.Debug("开始RSA签名")
 

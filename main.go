@@ -12,6 +12,7 @@ import (
 	"sendSMS/handle"
 	"sendSMS/trans"
 	"sendSMS/comm"
+	"mygolib/modules/gormdb"
 )
 
 var conf = flag.String("conf", "./etc/config.ini", "conf path")
@@ -37,11 +38,11 @@ func main() {
 	myLogger.Infoln("初始化日志")
 
 	//初始化db
-	//err = gormdb.InitModule()
-	//if err != nil {
-	//	fmt.Println("初始化数据库失败", err)
-	//	return
-	//}
+	err = gormdb.InitModule()
+	if err != nil {
+		fmt.Println("初始化数据库失败", err)
+		return
+	}
 	//myLogger.Infoln("初始化数据库")
 	//初始化缓存管理器
 	//err = cache.InitModule()
